@@ -6,11 +6,20 @@ using UnityEngine.Tilemaps;
 
 public partial class CursorController : MonoBehaviour {
     public DualGridTilemap dualGridTilemap;
+
+    private Vector3 offset = new Vector3(0.5f, 0.5f, -1);
+    private Camera mainCamera;
+
+    void Awake() {
+        mainCamera = Camera.main;
+    }
+        
+    
     void Update() {
-        var mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        var mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
         Vector3Int tilePos = GetWorldPosTile(mouseWorldPos);
-        transform.position = tilePos + new Vector3(0.5f, 0.5f, -1);
+        transform.position = tilePos + offset;
 
         if (Input.GetMouseButton(0)) {
             dualGridTilemap.SetCell(tilePos, dualGridTilemap.dirtPlaceholderTile);
