@@ -16,15 +16,15 @@ public class DualGridTilemap : MonoBehaviour {
     protected static Dictionary<Tuple<TileType, TileType, TileType, TileType>, Tile> neighbourTupleToTile;
 
     // Provide references to each tilemap in the inspector
-    public Tilemap placeholderTilemap;
-    public Tilemap displayTilemap;
+    [SerializeField] private Tilemap placeholderTilemap;
+    [SerializeField] private Tilemap displayTilemap;
 
     // Provide the dirt and grass placeholder tiles in the inspector
     public Tile grassPlaceholderTile;
     public Tile dirtPlaceholderTile;
 
     // Provide the 16 tiles in the inspector
-    public Tile[] tiles;
+    [SerializeField] private Tile[] tiles;
 
     void Start() {
         // This dictionary stores the "rules", each 4-neighbour configuration corresponds to a tile
