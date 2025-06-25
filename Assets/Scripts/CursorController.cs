@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public partial class CursorController : MonoBehaviour {
-    public DualGridTilemap dualGridTilemap;
+    [SerializeField] private DualGridTilemap dualGridTilemap;
 
     private Vector3 offset = new Vector3(0.5f, 0.5f, -1);
     private Camera mainCamera;
@@ -13,7 +13,6 @@ public partial class CursorController : MonoBehaviour {
     void Awake() {
         mainCamera = Camera.main;
     }
-        
     
     void Update() {
         var mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
